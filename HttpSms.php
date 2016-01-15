@@ -120,10 +120,10 @@ class HttpSms extends Component {
 
     /***
      * @param $id string - Application Id for the message. The id will be used to build the URL for the delivery report
-     * @param $sender string -
-     * @param $recipient string -
-     * @param $body string -
-     * @return mixed
+     * @param $sender string - SMS sender phone number or name
+     * @param $recipient string - SMS recipient phone number
+     * @param $body string - Body of the SMS
+     * @return array - Array with following keys: 'code' = http_code, 'content' = http_body, 'error' = curl http error
      * @throws Exception
      */
     public function sendSingleSms($id, $sender, $recipient, $body) {
