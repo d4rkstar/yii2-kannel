@@ -96,3 +96,10 @@ Delivery reports are:
 | HttpSms::DLR_DELIVERY_SMSC_SUCCESS  | 8  | Message gets accepted by the SMSC but the phone is off or out of reach. |
 | HttpSms::DLR_DELIVERY_SMSC_REJECT   | 16 | Message gets rejected by the SMSC (unknown subscriber, invalid destination number etc). |
 | HttpSms::DLR_ALL                    | 31 | All delivery notifications |
+
+## Kannel Check
+
+To check kannel status, a script named `check/kannel_check.php` is provided. 
+N.B.: This method is a bit insecure, but if your machines are inside a "secure" environment, there should be no problem.
+Put the script on the server where kannel is running and adapt it to your need.
+You should set the ```$checkUrl``` attribute to the URL of the kannel_check.php script.
