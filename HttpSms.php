@@ -6,14 +6,13 @@
  * Time: 22:22
  */
 
-namespace app\components;
-
+namespace d4rkstar\kannel;
 
 use Yii;
 use yii\base\Component;
 use yii\base\Exception;
 
-class Kannel extends Component {
+class HttpSms extends Component {
 
     // Message gets successfully delivered.
     const DLR_DELIVERY_SUCCESS = 1;
