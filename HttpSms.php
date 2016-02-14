@@ -153,7 +153,7 @@ class HttpSms extends Component {
             $formatParams[]=sprintf('to=%s',urlencode($recipient));
         }
         if (!empty($body)) {
-            $formatParams[]=sprintf('body=%s',urlencode($body));
+            $formatParams[]=sprintf('text=%s',urlencode($body));
         }
 
         if ($this->dlrMask>0) {
