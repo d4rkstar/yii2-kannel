@@ -63,8 +63,15 @@ class HttpSms extends Component {
      */
     public $dlrUrl = '';
 
-
+    /**
+     * @var string Url for delivery reports
+     */
     public $checkUrl = '';
+
+    /**
+     * @var bool If we should simulate sending
+     */
+    public $dryRun = false;
 
 
     public function getGUID($parenthesis=true){
@@ -175,16 +182,20 @@ class HttpSms extends Component {
 
         Yii::info('Build url: ' . $url);
 
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_HEADER, false);    // we want headers
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_URL, $url);
-
-
-        $http_content = curl_exec($ch);
-        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        $http_error = curl_error($ch);
-        curl_close($ch);
+        if ($this->dryRun) {
+            $http_content = '0: Accepted for delivery';
+            $http_code = 202;
+            $http_error = '';
+        } else {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_HEADER, false);    // we want headers
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_URL, $url);
+            $http_content = curl_exec($ch);
+            $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            $http_error = curl_error($ch);
+            curl_close($ch);
+        }
 
         /*
          Status	Body	                            Meaning
