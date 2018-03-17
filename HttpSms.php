@@ -173,8 +173,8 @@ class HttpSms extends Component {
             }
 
             $deliveryurl = sprintf($this->dlrUrl, $id, '%d');
-            $formatParams[] = sprintf('dlrurl=%s',urlencode($deliveryurl));
-            $formatParams[] = sprintf('dlrmask=%d',$this->dlrMask);
+            $formatParams[] = sprintf('dlr-url=%s',urlencode($deliveryurl));
+            $formatParams[] = sprintf('dlr-mask=%d',$this->dlrMask);
 
         }
 
